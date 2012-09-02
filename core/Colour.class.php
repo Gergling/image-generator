@@ -15,4 +15,12 @@ class Colour {
 	function allocate($img) {
 		return imagecolorallocatealpha($img, $this->red , $this->green , $this->blue , $this->alpha );
 	}
+	static function interpolate($min, $max, $current, Colour $from, Colour $to) {
+		return new Colour(
+			AdvancedMaths::interpolate($min, $max, $current, $from->getRed(), $to->getRed()),
+			AdvancedMaths::interpolate($min, $max, $current, $from->getGreen(), $to->getGreen()),
+			AdvancedMaths::interpolate($min, $max, $current, $from->getBlue(), $to->getBlue()),
+			AdvancedMaths::interpolate($min, $max, $current, $from->getAlpha(), $to->getAlpha())
+		);
+	}
 }

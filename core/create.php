@@ -1,5 +1,6 @@
 <?php
 
+require_once("AdvancedMaths.class.php");
 require_once("BasicImage.class.php");
 
 $width = $argv[1] OR die("Width required.\n");
@@ -18,6 +19,9 @@ echo "?: Included class file.\n";
 $img = new $objectname($width, $height, $truecolour);
 
 echo "?: Object instantiated.\n";
+echo "?: - True Colour: {$truecolour}.\n";
+echo "?: - Size: {$img->getWidth()}x{$img->getHeight()}.\n";
+echo "?: - Colours: ".count($img->getColourComponents()).".\n";
 
 $img->write($outputfile);
 
